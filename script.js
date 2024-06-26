@@ -10,7 +10,6 @@ function getComputerChoice () {
 
 }
 
-const computerChoice = getComputerChoice ();
 
 
 // const rock = document.querySelector('.rock-button');
@@ -19,17 +18,28 @@ const computerChoice = getComputerChoice ();
 
 // let humanChoice = document.querySelector('input');
 
-let button = document.querySelector('.human-choice-button');
+const rockButton = document.querySelector('.rock-button');
 
+const paperButton = document.querySelector('.paper-button'); 
+
+const scissorsButton = document.querySelector('.scissors-button');
+
+rockButton.addEventListener('click', () => {
+  playGame('rock');
+})
+
+paperButton.addEventListener('click', () => {
+  playGame('paper');
+})
+
+scissorsButton.addEventListener('click', () => {
+  playGame('scissors');
+})
 let result = document.querySelector('.result');
 
 let humanScore = 0;
 
 let computerScore = 0;
-
-button.addEventListener('click', () => {
-  playGame();
-})
 
 
 // function getHumanChoice () {
@@ -44,34 +54,33 @@ button.addEventListener('click', () => {
 
 // const humanMove = getHumanChoice();
 
-function playGame () {
+function playGame (humanMove) {
 
-  let humanMove = prompt("Please make your move"); 
+  const computerChoice = getComputerChoice();
 
-  if (humanMove.toLowerCase() === computerChoice) {
-    result.textContent = `Computer chose ${computerChoice}, you chose ${humanMove.toLowerCase()}. Tie. Your score ${humanScore}, Computer score ${computerScore}`;
-  } else if (humanMove.toLowerCase() === 'rock' && computerChoice === 'paper') {
+  if (humanMove === computerChoice) {
+    result.textContent = `Computer chose ${computerChoice}, you chose ${humanMove}. Tie. Your score ${humanScore}, Computer score ${computerScore}`;
+  } else if (humanMove === 'rock' && computerChoice === 'paper') {
     computerScore ++;
-    result.textContent = `Computer chose ${computerChoice}, you chose ${humanMove.toLowerCase()}. Computer wins. Your score ${humanScore}, Computer score ${computerScore}`;
-  } else if (humanMove.toLowerCase() === 'paper' && computerChoice === 'scissors') {
+    result.textContent = `Computer chose ${computerChoice}, you chose ${humanMove}. Computer wins. Your score ${humanScore}, Computer score ${computerScore}`;
+  } else if (humanMove === 'paper' && computerChoice === 'scissors') {
     computerScore++;
-    result.textContent = `Computer chose ${computerChoice}, you chose ${humanMove.toLowerCase()}. Computer wins. Your score ${humanScore}, Computer score ${computerScore}`;
-  } else if (humanMove.toLowerCase() === 'Scissors' && computerChoice === 'paper') {
+    result.textContent = `Computer chose ${computerChoice}, you chose ${humanMove}. Computer wins. Your score ${humanScore}, Computer score ${computerScore}`;
+  } else if (humanMove === 'scissors' && computerChoice === 'paper') {
     humanScore++;
-    result.textContent = `Computer chose ${computerChoice}, you chose ${humanMove.toLowerCase()}. You win. Your score ${humanScore}, Computer score ${computerScore}`;
-  } else if (humanMove.toLowerCase() === 'Rock' && computerChoice === 'scissors') {
+    result.textContent = `Computer chose ${computerChoice}, you chose ${humanMove}. You win. Your score ${humanScore}, Computer score ${computerScore}`;
+  } else if (humanMove === 'rock' && computerChoice === 'scissors') {
     humanScore++;
-    result.textContent = `Computer chose ${computerChoice}, you chose ${humanMove.toLowerCase()}. You win. Your score ${humanScore}, Computer score ${computerScore}`;
-  } else if (humanMove.toLowerCase() === 'Paper' && computerChoice === 'rock') {
+    result.textContent = `Computer chose ${computerChoice}, you chose ${humanMove}. You win. Your score ${humanScore}, Computer score ${computerScore}`;
+  } else if (humanMove === 'paper' && computerChoice === 'rock') {
     humanScore++;
-    result.textContent = `Computer chose ${computerChoice}, you chose ${humanMove.toLowerCase()}. You win. Your score ${humanScore}, Computer score ${computerScore} Your score ${humanScore}, Computer score ${computerScore}`;
-  } else if (humanMove.toLowerCase() === 'Scissors' && computerChoice === 'rock') {
+    result.textContent = `Computer chose ${computerChoice}, you chose ${humanMove}. You win. Your score ${humanScore}, Computer score ${computerScore}`;
+  } else if (humanMove === 'scissors' && computerChoice === 'rock') {
     computerScore++;
-    result.textContent = `Computer chose ${computerChoice}, you chose ${humanMove.toLowerCase()}. Computer wins. Your score ${humanScore}, Computer score ${computerScore}`;
+    result.textContent = `Computer chose ${computerChoice}, you chose ${humanMove}. Computer wins. Your score ${humanScore}, Computer score ${computerScore}`;
   } else {
     result.textContent = 'ERROR! Make a correct move!'
   }
 }
 
-
-
+console.log(computerChoice);
